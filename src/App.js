@@ -15,6 +15,7 @@ function addNum() {
   numOfClick++;
 }
 
+
 function App() {
   
   //Destructuring
@@ -27,7 +28,14 @@ function App() {
   let [Homework, setHomework] = useState(['Homework', 'Add a button for updating chapter2 title']);  
   let [numOfClick, updateNOC] = useState(0);
   const [currentDate, setCurrentDate] = useState(getDate());
-  
+   
+  const renameTitle = () =>{   //Modify Array, object state data
+    var newArr = [...Ch2Title]; //Do not update state directly.
+                                //Do deep copy 
+    newArr[0] = "Update Chapter #2 to Chapter #3";
+    setCh2Title(newArr);
+  }
+
   return (
     <div className ='App'>
       <div className='black-nav'>
@@ -50,7 +58,9 @@ function App() {
             { Homework[1] }            
           </li>
           <li>
-            <button onClick={ () => { setCh2Title(['Chapter3', 'Move on to the next Chapter #3'])}}>Homework Button</button>
+            <button onClick={ () => { setCh2Title(['Chapter3', 'Move on to the next Chapter #3'])}}> Homework - Rename Title(1)</button>
+            <br/>
+            <button onClick={ renameTitle }> Homework - Rename Title(2)</button>
           </li>
           </ul>      
         </ol>      
